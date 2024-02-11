@@ -2,9 +2,30 @@
 % in this template few examples are mention
 \chapter{Methodology}
 \label{ch:method} % Label for method chapter
+Recognizing the need for early detection and management of cardiovascular conditions, we utilize machine learning algorithms to analyze patient data and predict the likelihood of heart disease. Our methodology encompasses data collection, preprocessing, feature extraction, model development, and evaluation, aiming to deliver a robust and effective predictive tool for doctors. By integrating innovative learning algorithms and conducting experiments, we aspire to contribute meaningful solutions and enhance patient outcomes in cardiovascular health.
 
-We mentioned in Chapter~\ref{ch:into} %[example backward reference to a chapter or section.]
-that a project report's structure could follow a particular paradigm. Hence, the organization of a report (effectively the Table of Content of a report) can vary depending on the type of project you are doing. Check which of the given examples suit your project. Alternatively, follow your supervisor's advice.
+\section{Algorithms Descriptions}
+\subsection{Logistic Regression}
+LR is a statistical method used for binary classification tasks. It models the probability of a binary outcome based on one or more predictor variables. In the context of heart disease prediction, LR can analyze patient parameters such as age, cholesterol levels, and blood pressure to estimate the likelihood of the presence of heart disease.
+
+\subsection{Naïve Bayes}
+NB is a probabilistic classifier based on Bayes' theorem with an assumption of independence between features. In heart disease prediction, Naïve Bayes can effectively analyze patient attributes and calculate the conditional probability of heart disease given the observed features. Its simplicity and computational efficiency make Naïve Bayes a popular choice for healthcare applications.
+
+\subsection{Random Forest}
+RF is an ensemble learning method that constructs a multitude of decision trees during training and outputs the mode of the classes (classification) or mean prediction (regression) of the individual trees. In heart disease prediction, Random Forest can analyze a large number of patient parameters and identify complex patterns associated with cardiovascular conditions.
+
+\section{Implementations}
+\subsection{Logistic Regression}
+For LR implementation, we'll utilize the `LogisticRegression` class from the `sklearn.linear\_model` module. We'll preprocess the dataset, including handling missing values and scaling features, before fitting the model to the training data.
+
+\subsection{Naïve Bayes}
+For NB implementation, we'll use the `GaussianNB` class from the `sklearn.naive\_bayes` module. Similar to Logistic Regression, we'll preprocess the dataset and fit the model to the training data.
+
+\subsection{Random Forest}
+For RF implementation, we'll employ the `RandomForestClassifier` class from the `sklearn.ensemble` module. We'll preprocess the dataset and tune hyperparameters, such as the number of estimators and maximum depth, to optimize model performance.
+
+\section{Experiments Design}
+We'll conduct experiments to evaluate the performance of each algorithm in predicting heart disease. We'll split the dataset into training and testing sets, using techniques such as cross-validation to ensure robustness of the results. We'll measure performance metrics such as accuracy, precision, recall, and F1-score to assess the effectiveness of each algorithm. Additionally, we'll compare the results across algorithms to identify the most suitable approach for heart disease prediction.
 
 \section{Examples of the sections of a methodology chapter}
 A general report structure is summarised (suggested) in Table~\ref{tab:gen_template}. Table~\ref{tab:gen_template} describes that, in general, a typical report structure has three main parts: (1) front matter, (2) main text, and (3) end matter. %[\textbf{also notice that the preceding sentence is an example of a numbered list in a text body}]. 
