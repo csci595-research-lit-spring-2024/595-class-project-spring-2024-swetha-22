@@ -1,48 +1,87 @@
 \chapter{Introduction}
 \label{ch:into} % This how you label a chapter and the key (e.g., ch:into) will be used to refer this chapter ``Introduction'' later in the report. 
 % the key ``ch:into'' can be used with command \ref{ch:intor} to refere this Chapter.
-Today, heart problems are a major health concern affecting individuals worldwide. Many people are suffering from heart issues like heart disease, heart failure, and irregular heartbeats nowadays. Heart problems can affect people, not just physically but also emotionally. Those with heart conditions often find it difficult to live normally and face many difficulties. Additionally, the financial side of managing heart problems adds an extra layer of challenges. Spotting heart-related issues early is crucial. It helps healthcare professionals to step in quickly, enhance patient outcomes, and ease the strain on healthcare resources. Early detection allows for timely intervention, potentially preventing the progression of heart conditions.To address the need for early detection, our project focuses on developing a machine learning model capable of accurately identifying the presence of heart diseases. In this endeavor, we utilize a heart-related issue dataset from \citep{janosi-1988}, sourced from the online repository UC Irvine. The data undergoes thorough cleaning and pre-processing to extract useful information essential for training the machine learning model. The machine learning algorithms employed, as highlighted by \citep{Sharma-2020}, include Logistic Regression, Naïve Bayes, and Random Forest classification. These algorithms have demonstrated effectiveness in detecting coronary artery disease by evaluating outputs based on various factors such as resting blood pressure, serum cholesterol, maximum heart rate achieved, and more. Furthermore, our project aims not only to detect heart-related issues but also to contribute valuable insights to the broader field of cardiovascular health. By leveraging advanced algorithms, we seek to ensure the effective prediction of heart-related problems, potentially revolutionizing the early diagnosis and management of cardiovascular conditions.
+Today, heart problems are a major health concern affecting individuals worldwide. Many people 
+are suffering from heart issues like heart disease, heart failure, and irregular heartbeats \cite{webb2015care}. Heart problems can affect people, not just physically but also emotionally. Those 
+with heart conditions often find it difficult to live normally and face many difficulties.
+Additionally, the financial side of managing heart problems adds an extra layer of challenges. 
+Spotting heart-related issues early is crucial. It helps healthcare professionals to step in 
+quickly, enhance patient outcomes, and ease the strain on healthcare resources. Early detection  
+allows for timely intervention, potentially preventing the progression of heart conditions.To 
+address the need for early detection, our project focuses on developing a machine learning 
+model capable of accurately identifying the presence of heart diseases. In this endeavor, we 
+utilize a heart-related issue dataset from \citep{janosi-1988}, sourced from the online 
+repository UC Irvine. The data undergoes thorough cleaning and pre-processing to extract useful 
+information essential for training the machine learning model. The machine learning algorithms 
+employed, as highlighted by \citep{Sharma-2020}, include LR, NB, and 
+RF classification. These algorithms have demonstrated effectiveness in detecting 
+coronary artery disease by evaluating outputs based on various factors such as resting blood 
+pressure, serum cholesterol, maximum heart rate achieved, and more. Furthermore, our project 
+aims not only to detect heart-related issues but also to contribute valuable insights to the 
+broader field of cardiovascular health. By leveraging advanced algorithms, we seek to ensure 
+the effective prediction of heart-related problems, potentially revolutionizing the early 
+diagnosis and management of cardiovascular conditions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Background}
 \label{sec:into_back}
-Our project focuses on addressing the issue of cardiovascular diseases in today's world, affecting everyone irrespective of their age. The primary motivation behind our work is to detect the heart-related diseases as early as possible. This identification helps doctors to start the treatment sooner, to improve patient results and effectively using the healthcare resources. For this, our project focuses on integrating technology into healthcare by using the abundant data in cardiology for predictive modeling. The primary goal is to develop an efficient heart disease prediction system by concentrating on predicting Coronary Artery Disease with precision and effectiveness. So, we use different machine learning models such as Logistic Regression, Random Forest, and Naive Bayes. These models play a crucial role in predicting and understanding heart-related issues. The initial phase involves cleaning and preprocessing the data to extract necessary patterns required for training the models. Our project becomes significant as it can give better resources to doctors for finding and handling heart problems early on. We want to help make hearts healthier by explaining some crucial ideas and ways to use them in a simple way.
+Our project focuses on addressing the issue of cardiovascular diseases in today's world, 
+affecting everyone irrespective of their age. The primary motivation behind our work is to 
+detect the heart-related diseases as early as possible. This identification helps doctors to 
+start the treatment sooner, to improve patient results and effectively using the healthcare 
+resources. For this, our project focuses on integrating technology into healthcare by using the 
+abundant data in cardiology for predictive modeling. The primary goal is to develop an 
+efficient heart disease prediction system by concentrating on predicting CAD with precision and effectiveness. So, we use different machine learning models such as 
+LR, RF, NB. These models play a crucial role in 
+predicting and understanding heart-related issues. The project commences with data preprocessing to extract essential patterns required for training the models, aligning with the objectives and research approach outlined in subsequent sections. Our 
+project becomes significant as it can give better resources to doctors for finding and handling 
+heart problems early on. We want to help make hearts healthier by explaining some crucial ideas 
+and ways to use them in a simple way.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Research Question}
 \label{sec:intro_prob_art}
-How can machine learning models, specifically Logistic Regression, Naïve Bayes, and Random Forest classification algorithms, be effectively utilized to develop a heart disease prediction system for early detection of Coronary Artery Disease, with a focus on improving patient outcomes and contributing to advancements in cardiovascular health?
+How can machine learning models, specifically Logistic Regression, Naïve Bayes, and Random 
+Forest classification algorithms, be effectively utilized to develop a heart disease prediction 
+system for early detection of Coronary Artery Disease, with a focus on improving patient 
+outcomes and contributing to advancements in cardiovascular health?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Aims and objectives}
+\subsection{Aims and objectives}
 \label{sec:intro_aims_obj}
  
 
-\textbf{Aims:}To develop and implement an advanced heart disease prediction system, utilizing machine learning models for early detection of Coronary Artery Disease, with the ultimate goal of enhancing patient outcomes and contributing to the ongoing global efforts in cardiovascular health.
-\textbf{Objectives:} The Objectives include to Perform data cleaning and preprocessing, apply Logistic Regression, Naïve Bayes, and Random Forest algorithms, integrate technology into healthcare, provide valuable resources to healthcare professionals, and innovate existing approaches to address gaps, thereby achieving early identification and proactive management of heart-related issues.
+\textbf{Aims:}To develop and implement an advanced heart disease prediction system, utilizing 
+machine learning models for early detection of CAD, with the ultimate goal 
+of enhancing patient outcomes and contributing to the ongoing global efforts in cardiovascular 
+health.
+\textbf{Objectives:}
+\begin{itemize}
+    \item Obtain and analyze the heart disease dataset, clean and preprocess the data for model training.
+    \item Train LR classifier, optimizing meta-parameters for improved performance.
+    \item Develop NB classifier, focusing on feature selection and parameter tuning.
+    \item Utilize RF algorithm to construct decision tree ensembles, refining predictive capabilities.
+    \item Integrate trained models into healthcare systems for real-time heart disease prediction.
+    \item Provide healthcare professionals with valuable insights and resources for informed decision-making.
+\end{itemize}
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Solution approach}
 \label{sec:intro_sol} % label of Org section
-The solution approach involves a thorough step-by-step method designed to create an advanced system for predicting heart disease, specifically focusing on early detection of Coronary Artery Disease (CAD), with the ultimate goal of achieving our defined aim and objectives. The project commences with the acquisition of a dataset related to cardiac issues obtained from the research conducted by Janosi and Detrano, which is accessible through UC Irvine. Following that, we carefully clean and process the data to find important patterns needed for training our machine learning models. We incorporate technology into healthcare by using different smart algorithms, like Logistic Regression, Naïve Bayes, and Random Forest classification. These specific algorithms are chosen because they are proficient in effectively predicting Coronary Artery Disease (CAD), by taking into account key factors such as resting blood pressure, serum cholesterol, and maximum heart rate achieved. The models are evaluated using specific metrics like precision, recall, and the F1 score to provide us with the understanding of how well they are performing.
+The solution approach involves a thorough step-by-step method designed to create an advanced 
+system for predicting heart disease, specifically focusing on early detection of CAD, with the ultimate goal of achieving our defined aim and objectives. The 
+project commences with the acquisition of a dataset related to cardiac issues obtained from the 
+research conducted by \cite{janosi-1988}, which is accessible through UC Irvine. Following 
+that, we carefully clean and process the data to find important patterns needed for training 
+our machine learning models. We incorporate technology into healthcare by using different smart 
+algorithms, like LR, NB, and RF classification. These 
+specific algorithms are chosen because they are proficient in effectively CAD, by taking into account key factors such as resting blood pressure, serum 
+cholesterol, and maximum heart rate achieved. The models are evaluated using specific metrics 
+like precision, recall, and the F1 score to provide us with the understanding of how well they 
+are performing.
 
 
-\subsection{A subsection 1}
-\label{sec:intro_some_sub1}
-You may or may not need subsections here. Depending on your project's needs, add two or more subsection(s). A section takes at least two subsections. 
-
-\subsection{A subsection 2}
-\label{sec:intro_some_sub2}
-Depending on your project's needs, add more section(s) and subsection(s).
-
-\subsubsection{A subsection 1 of a subsection}
-\label{sec:intro_some_subsub1}
-The command \textbackslash subsubsection\{\} creates a paragraph heading in \LaTeX.
-
-\subsubsection{A subsection 2 of a subsection}
-\label{sec:intro_some_subsub2}
-Write your text here...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary of contributions and achievements} %  use this section 
@@ -51,11 +90,4 @@ Describe clearly what you have done/created/achieved and what the major results 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Organization of the report} %  use this section
-\label{sec:intro_org} % label of Org section
-Describe the outline of the rest of the report here. Let the reader know what to expect ahead in the report. Describe how you have organized your report. 
-
-\textbf{Example: how to refer a chapter, section, subsection}. This report is organised into seven chapters. Chapter~\ref{ch:lit_rev} details the literature review of this project. In Section~\ref{ch:method}...  % and so on.
-
-\textbf{Note:}  Take care of the word like ``Chapter,'' ``Section,'' ``Figure'' etc. before the \LaTeX command \textbackslash ref\{\}. Otherwise, a  sentence will be confusing. For example, In \ref{ch:lit_rev} literature review is described. In this sentence, the word ``Chapter'' is missing. Therefore, a reader would not know whether 2 is for a Chapter or a Section or a Figure.
 

@@ -1,21 +1,26 @@
 \chapter{Literature Review}
-\label{ch:lit_rev} %Label of the chapter lit rev. The key ``ch:lit_rev'' can be used with command \ref{ch:lit_rev} to refer this Chapter.
-The literature review looks into the current state of cardiovascular disease research, highlighting its global impact across different age groups. Many recent studies show worry about heart problems like disease, failure, and abnormal rhythms, which hurt people's bodies and emotions. Identifying the health issues sooner could help the doctors to respond fast, improve the patient results, effectively utilize the health care resources. [4] Janosi and Detrano's (1988) heart-related issue dataset from UC Irvine serves as a valuable resource for our project, showing how existing data can be helpful in medicine. [5] The study by Sharma et al. (2020) reinforces the significance of employing machine learning algorithms, specifically Logistic Regression, Naïve Bayes, and Random Forest classification, for accurate detection of coronary artery disease. Studies show that things like how high your blood pressure is at rest, how much cholesterol you have in your blood (serum cholesterol), and how fast your heart beats during exercise are all important for figuring out if someone might have heart disease. Our project mainly focuses on integrating technology into healthcare, aligning with the existing literature. [6] Looking at past research on heart disease prediction shows what are the necessary improvements and different ways to predict and understand heart problems. By addressing these gaps, our project helps doctors find and treat heart problems as soon as possible, which is btter for patients and hospitals. The literature review emphasizes our significant impact in contributing to the ongoing efforts to combat cardiovascular diseases and underscores the need for advanced predictive tools to address this global health challenge.
+\label{ch:lit_rev}
 
-% PLEAE CHANGE THE TITLE of this section
-\section{Example of ``risk'' of unintentional plagiarism}
-Using other sources, ideas, and material always bring with it a risk of unintentional plagiarism. 
+\section{Introduction to Heart Disease}
+Cardiovascular diseases pose a significant threat to global health, affecting individuals of all ages. These conditions, including heart disease, heart failure, and irregular heartbeats, have profound physical and emotional impacts on affected individuals. Early detection and effective management are critical in mitigating the adverse effects of heart-related issues and improving patient outcomes.
 
-\noindent
-\textbf{\color{red}MUST}: do read the university guidelines on the definition of plagiarism as well as the guidelines on how to avoid plagiarism~\citep{uor_plagiarism}.
+\section{Background on Machine Learning Models}
+
+\subsection{Logistic Regression}
+LR is a statistical method used for binary classification tasks. It models the probability of a binary outcome based on one or more predictor variables. In the context of heart disease prediction, LR can analyze patient parameters such as age, cholesterol levels, and blood pressure to estimate the likelihood of the presence of heart disease. LR is widely used in healthcare research due to its simplicity, interpretability, and ability to handle linear relationships between variables.
+
+\subsection{Naïve Bayes}
+NB is a probabilistic classifier based on Bayes' theorem with an assumption of independence between features. Despite its simplistic assumption, NB has been shown to perform well in various classification tasks, including text categorization and medical diagnosis. In heart disease prediction, NB can effectively analyze patient attributes and calculate the conditional probability of heart disease given the observed features.
+
+\subsection{Random Forest}
+RF is an ensemble learning method that constructs a multitude of decision trees during training and outputs the mode of the classes (classification) or mean prediction (regression) of the individual trees. RF is known for its robustness and ability to handle high-dimensional data. In heart disease prediction, RF can analyze a large number of patient parameters and identify complex patterns associated with cardiovascular conditions.
 
 
+\section{Performance Measures for Evaluation}
+To evaluate the performance of our machine learning models, we will employ several performance measures, including accuracy, precision, recall, and F1-score. These metrics provide insights into the models' ability to correctly classify instances of heart disease and non-heart disease cases. By evaluating multiple performance measures, we can assess the overall effectiveness of our predictive models and identify areas for improvement.
 
+\section{Description of the Dataset}
+Our project utilizes the heart disease dataset sourced from UC Irvine, compiled by \cite{janosi-1988}. This dataset contains various patient attributes, such as age, sex, cholesterol levels, and resting blood pressure, along with the presence or absence of heart disease. We preprocess the dataset to handle missing values and normalize the features to ensure optimal model performance.
 
-% A possible section of you chapter
-\section{Critique of the review} % Use this section title or choose a betterone
-Describe your main findings and evaluation of the literature. ~\\
-
-% Pleae use this section
-\section{Summary} 
-Write a summary of this chapter~\\
+\section{Summary of Literature Reviewed}
+The literature review highlights the significance of early detection and effective management in combating cardiovascular diseases. Previous studies have demonstrated the utility of machine learning algorithms in predicting heart disease, with research highlighting the importance of feature selection, parameter tuning, and model evaluation. By building upon existing literature and leveraging advanced predictive tools, our project aims to contribute to the ongoing efforts in cardiovascular health and improve patient outcomes.
