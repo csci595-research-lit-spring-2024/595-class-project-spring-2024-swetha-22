@@ -17,15 +17,69 @@ RF is an ensemble learning method that constructs a multitude of decision trees 
 \section{Implementations}
 \subsection{Logistic Regression}
 For LR implementation, we'll utilize the `LogisticRegression` class from the `sklearn.linear\_model` module. We'll preprocess the dataset, including handling missing values and scaling features, before fitting the model to the training data.
-
 \subsection{Naïve Bayes}
 For NB implementation, we'll use the `GaussianNB` class from the `sklearn.naive\_bayes` module. Similar to Logistic Regression, we'll preprocess the dataset and fit the model to the training data.
-
 \subsection{Random Forest}
 For RF implementation, we'll employ the `RandomForestClassifier` class from the `sklearn.ensemble` module. We'll preprocess the dataset and tune hyperparameters, such as the number of estimators and maximum depth, to optimize model performance.
 
 \section{Experiments Design}
-We'll conduct experiments to evaluate the performance of each algorithm in predicting heart disease. We'll split the dataset into training and testing sets, using techniques such as cross-validation to ensure robustness of the results. We'll measure performance metrics such as accuracy, precision, recall, and F1-score to assess the effectiveness of each algorithm. Additionally, we'll compare the results across algorithms to identify the most suitable approach for heart disease prediction.
+In our experimental approach to assess the predictive performance of each algorithm for heart disease, we'll begin by dividing our dataset into separate training and testing sets. This division ensures that the models are trained on a subset of the data and evaluated on an independent portion, enabling us to gauge their generalization capability. To further fortify the reliability of our findings, we'll employ cross-validation techniques. This involves iteratively partitioning the dataset into multiple subsets, training the models on different combinations, and validating them on the remaining data, thus providing a more comprehensive evaluation. Subsequently, we'll utilize a range of performance metrics, including accuracy, precision, recall, and F1-score, to quantify the algorithms' effectiveness. These metrics will allow us to discern not only the models' overall correctness but also their ability to precisely identify positive cases and recall them accurately. By meticulously analyzing these performance indicators, we aim to determine the most optimal approach for heart disease prediction, considering factors such as model interpretability and computational efficiency alongside predictive accuracy.
+
+\section{Algorithms}
+In our project, we implement three distinct machine learning algorithms—Logistic Regression, Random Forest, and Naive Bayes—to predict heart disease. Logistic Regression is a simple yet powerful algorithm used for binary classification tasks, where it models the probability of a binary outcome. Random Forest, on the other hand, is an ensemble learning method that constructs multiple decision trees and aggregates their predictions to improve accuracy. Naive Bayes is a probabilistic classifier based on Bayes' theorem, particularly effective for datasets with high dimensionality and strong feature independence assumptions. Each algorithm offers unique advantages and approaches in identifying patterns and making predictions, contributing to our comprehensive analysis of heart disease prediction.
+
+\begin{algorithm}
+    \caption{Logistic Regression}
+    \label{algo:logistic_regression}
+    \begin{algorithmic}[1]
+        \Require{Training dataset $(X_{train}, Y_{train})$, Test dataset $X_{test}$}
+        \Ensure{Predicted class labels for $X_{test}$}
+        \Statex
+        \Function{LogisticRegression}{$X_{train}, Y_{train}, X_{test}$}
+        \State Initialize logistic regression classifier
+        \State Standardize features: $X_{train} \gets \text{StandardScaler.fit\_transform}(X_{train})$
+        \State Fit classifier to training data: $classifier.fit(X_{train}, Y_{train})$
+        \State Standardize test features: $X_{test} \gets \text{StandardScaler.transform}(X_{test})$
+        \State Predict probabilities for test data: $y_{prob} \gets classifier.predict\_proba(X_{test})$
+        \State Convert probabilities to class labels: $y_{pred} \gets \text{threshold\_function}(y_{prob})$
+        \State \Return $y_{pred}$
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+    \caption{Random Forest}
+    \label{algo:random_forest}
+    \begin{algorithmic}[1]
+        \Require{Training dataset $(X_{train}, Y_{train})$, Test dataset $X_{test}$}
+        \Ensure{Predicted class labels for $X_{test}$}
+        \Statex
+        \Function{RandomForest}{$X_{train}, Y_{train}, X_{test}$}
+        \State Initialize random forest classifier with specified parameters
+        \State Handle missing values: $X_{train}, X_{test} \gets \text{Imputer.fit\_transform}(X_{train}, X_{test})$
+        \State Fit classifier to training data: $classifier.fit(X_{train}, Y_{train})$
+        \State Predict class labels for test data: $y_{pred} \gets classifier.predict(X_{test})$
+        \State \Return $y_{pred}$
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+    \caption{Naive Bayes}
+    \label{algo:naive_bayes}
+    \begin{algorithmic}[1]
+        \Require{Training dataset $(X_{train}, Y_{train})$, Test dataset $X_{test}$}
+        \Ensure{Predicted class labels for $X_{test}$}
+        \Statex
+        \Function{NaiveBayes}{$X_{train}, Y_{train}, X_{test}$}
+        \State Initialize naive Bayes classifier
+        \State Discretize continuous features: $X_{train}, X_{test} \gets \text{Binarizer.fit\_transform}(X_{train}, X_{test})$
+        \State Fit classifier to training data: $classifier.fit(X_{train}, Y_{train})$
+        \State Predict class labels for test data: $y_{pred} \gets classifier.predict(X_{test})$
+        \State \Return $y_{pred}$
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
 
 \section{Examples of the sections of a methodology chapter}
 A general report structure is summarised (suggested) in Table~\ref{tab:gen_template}. Table~\ref{tab:gen_template} describes that, in general, a typical report structure has three main parts: (1) front matter, (2) main text, and (3) end matter. %[\textbf{also notice that the preceding sentence is an example of a numbered list in a text body}]. 
