@@ -89,91 +89,253 @@ In our project, we implement three distinct machine learning algorithms—Logist
     \label{fig:enter-label}
 \end{figure}
 
-\section{Example of code snippet  in \LaTeX}
 
-Code Listing~\ref{list:python_code_ex} is a good example of including a code snippet in a report. While using code snippets, take care of the following:
-\begin{itemize}
-    \item do not paste your entire code (implementation) or everything you have coded. Add code snippets only. 
-    \item The algorithm shown in Algorithm~\ref{algo:algo_example} is usually preferred over code snippets in a technical/scientific report. 
-    \item Make sure the entire code snippet or algorithm stays on a single page and does not overflow to another page(s).  
-\end{itemize}
+\section{Code}
+\subsection{Data Pre-processing}
+\begin{lstlisting}[language=Python, label=list:python_code_ex]
+# Importing the libraries
 
-Here are three examples of code snippets for three different languages (Python, Java, and CPP) illustrated in Listings~\ref{list:python_code_ex}, \ref{list:java_code_ex}, and \ref{list:cpp_code_ex} respectively.  
-
-\begin{lstlisting}[language=Python, caption={Code snippet in \LaTeX ~and  this is a Python code example}, label=list:python_code_ex]
 import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
 
-x  = [0, 1, 2, 3, 4, 5] # assign values to an array
-evenSum = evenSummation(x) # call a function
+from sklearn.impute import SimpleImputer
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
+from sklearn.metrics import roc_auc_score
+from sklearn.metrics import roc_curve
 
-def evenSummation(x):
-    evenSum = 0
-    n = len(x)
-    for i in range(n):
-        if np.mod(x[i],2) == 0: # check if a number is even?
-            evenSum = evenSum + x[i]
-    return evenSum
+# Importing the dataset
+dataset = pd.read_csv('cleve.csv')
+
+#defining X values ang y values
+X = dataset.iloc[:, :-1].values
+Y = dataset.iloc[:, 13].values
+
+#handling missing data
+imputer= SimpleImputer(missing_values=np.nan, strategy='mean')
+imputer=imputer.fit(X[:,11:13])
+X[:,11:13]=imputer.transform(X[:,11:13])
+
+#splitting dataset into training set and test set
+X_train,X_test,Y_train,Y_test=train_test_split(X, Y, test_size = 0.25, random_state = 101)
+
+#feature scaling
+s=StandardScaler()
+X_train=s.fit_transform(X_train)
+X_test=s.transform(X_test)
 \end{lstlisting}
 
-Here we used  the ``\textbackslash clearpage'' command and forced-out the second listing example onto the next page. 
 \clearpage  %
-\begin{lstlisting}[language=Java, caption={Code snippet in \LaTeX ~and  this is a Java code example}, label=list:java_code_ex]
-public class EvenSum{ 
-    public static int evenSummation(int[] x){
-        int evenSum = 0;
-        int n = x.length;
-        for(int i = 0; i < n; i++){
-            if(x[i]%2 == 0){ // check if a number is even?
-                evenSum = evenSum + x[i];
-            }
-        }
-        return evenSum;     
-    }
-    public static void main(String[] args){ 
-        int[] x  = {0, 1, 2, 3, 4, 5}; // assign values to an array
-        int evenSum = evenSummation(x);
-        System.out.println(evenSum);
-    } 
-} 
+
+\subsection{Logistic Regression}
+\begin{lstlisting}[language=Python, label=list:python_code_ex]
+#fitting LR to training set
+from sklearn.linear_model import LogisticRegression
+LogisticRegressionClassifier =LogisticRegression()
+LogisticRegressionClassifier.fit(X_train,Y_train)
+
+#Predict the test set results
+Y_pred=LogisticRegressionClassifier.predict(X_test)
+
+#checking the accuracy for predicted results
+accuracy_score(Y_test,Y_pred)
+
+# Making the Confusion Matrix
+cm = confusion_matrix(Y_test, Y_pred)
+
+#Interpretation:
+print(classification_report(Y_test, Y_pred))
 \end{lstlisting}
 
+\begin{table}[h!]
+    \centering
+    \caption{Classification Report of LR}
+    \label{tab:_ex_tab}
+    \begin{tabular}{ccccc}     
+        \toprule
+            &  precision & recall & f1-score & support \\
+        \midrule
+        0 & 0.81 & 0.94 & 0.87 & 36 \\
+        1 & 0.94 & 0.80 & 0.86 & 40 \\
 
-\begin{lstlisting}[language=C, caption={Code snippet in \LaTeX ~and  this is a C/C++ code example}, label=list:cpp_code_ex]
-int evenSummation(int x[]){
-    int evenSum = 0;
-    int n = sizeof(x);
-    for(int i = 0; i < n; i++){
-        if(x[i]%2 == 0){ // check if a number is even?
-            evenSum = evenSum + x[i];
-    	}
-    }
-    return evenSum;     
-}
+        accuracy & - & - & 0.87 & 76 \\
+        macro avg & 0.88 & 0.87 & 0.87 & 76 \\
+        weighted avg & 0.88 & 0.87 & 0.87 & 76 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
-int main(){
-    int x[]  = {0, 1, 2, 3, 4, 5}; // assign values to an array
-    int evenSum = evenSummation(x);
-    cout<<evenSum;
-    return 0;
-}
+\begin{lstlisting}[language=Python, label=list:python_code_ex]
+#ROC
+logit_roc_auc = roc_auc_score(Y_test, LogisticRegressionClassifier.predict(X_test))
+fpr, tpr, thresholds = roc_curve(Y_test, LogisticRegressionClassifier.predict_proba(X_test)[:,1])
+plt.figure()
+plt.plot(fpr, tpr, label='Logistic Regression (area = %0.2f)' % logit_roc_auc)
+plt.plot([0, 1], [0, 1],'r--')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Receiver operating characteristic')
+plt.legend(loc="lower right")
+plt.savefig('Log_ROC')
+plt.show()
+
+#PREDICTION FOR NEW DATASET using LogisticRegressionClassifier
+Newdataset = pd.read_csv('newdata.csv')
+ynew=LogisticRegressionClassifier.predict(Newdataset)
+print("Predicted Class for newdata.csv:",ynew)
 \end{lstlisting}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{LR.png}
+    \caption{Receiver operating characteristics of LR}
+    \label{fig:enter-label}
+\end{figure}
+
+\subsection{Random Forest}
+\begin{lstlisting}[language=Python, label=list:python_code_ex]
+# Fitting RandomForestClassifier to the Training set
+from sklearn.ensemble import RandomForestClassifier
+RandomForestClassifier =RandomForestClassifier(n_estimators=20)
+RandomForestClassifier.fit(X_train, Y_train)
+
+# Predicting the Test set results
+Y_pred2 = RandomForestClassifier.predict(X_test)
+from sklearn.metrics import accuracy_score
+accuracy_score(Y_test,Y_pred2)
+
+# Making the Confusion Matrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(Y_test, Y_pred2)
+
+#Interpretation:
+print(classification_report(Y_test, Y_pred2))
+\end{lstlisting}
+
+\begin{table}[h!]
+    \centering
+    \caption{Classification Report of RF}
+    \label{tab:_ex_tab}
+    \begin{tabular}{ccccc}     
+        \toprule
+            &  precision & recall & f1-score & support \\
+        \midrule
+        0 & 0.80 & 0.89 & 0.84 & 36 \\
+        1 & 0.89 & 0.80 & 0.84 & 40 \\
+
+        accuracy & - & - & 0.84 & 76 \\
+        macro avg & 0.84 & 0.84 & 0.84 & 76 \\
+        weighted avg & 0.85 & 0.84 & 0.84 & 76 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\clearpage  %
+
+\begin{lstlisting}[language=Python, label=list:python_code_ex]
+#ROC
+from sklearn.metrics import roc_auc_score
+from sklearn.metrics import roc_curve
+logit_roc_auc = roc_auc_score(Y_test, RandomForestClassifier.predict(X_test))
+fpr, tpr, thresholds = roc_curve(Y_test, RandomForestClassifier.predict_proba(X_test)[:,1])
+plt.figure()
+plt.plot(fpr, tpr, label='Random Forest (area = %0.2f)' % logit_roc_auc)
+plt.plot([0, 1], [0, 1],'r--')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Receiver operating characteristic')
+plt.legend(loc="lower right")
+plt.savefig('RF_ROC')
+plt.show()
+
+#PREDICTION FOR NEW DATASET using RandomForest
+ynew=RandomForestClassifier.predict(Newdataset)
+print("Predicted Class for newdata.csv:",ynew)
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{RF.png}
+    \caption{Receiver operating characteristics of RF}
+    \label{fig:enter-label}
+\end{figure}
+
+\subsection{Naive Bayes}
+\begin{lstlisting}[language=Python, label=list:python_code_ex]
+NaiveBayesimputer= SimpleImputer(strategy='mean')
+NaiveBayesimputer=NaiveBayesimputer.fit(X[:,11:13])
+X[:,11:13]=NaiveBayesimputer.transform(X[:,11:13])
+
+#splitting dataset into training set and test set
+X_train,X_test,Y_train,Y_test=train_test_split(X, Y, test_size = 0.25, random_state = None)
+
+# Fitting Naive Bayes to the Training set
+from sklearn.naive_bayes import GaussianNB
+NaiveBayesClassifier = GaussianNB()
+NaiveBayesClassifier.fit(X_train, Y_train)
 
 
-\section{Example of in-text citation style}
-\subsection{Example of the equations and illustrations placement and reference in the text}
-Make sure whenever you refer to the equations, tables, figures, algorithms,  and listings for the first time, they also appear (placed) somewhere on the same page or in the following page(s). Always make sure to refer to the equations, tables and figures used in the report. Do not leave them without an \textbf{in-text citation}. You can refer to equations, tables and figures more them once.
+# Predicting the Test set results
+Y_pred3 = NaiveBayesClassifier.predict(X_test)
+#ACCURACY SCORE
+accuracy_score(Y_test,Y_pred3)
 
-\subsection{Example of the equations and illustrations style}
-Write \textbf{Eq.} with an uppercase ``Eq`` for an equation before using an equation number with (\textbackslash eqref\{.\}). Use ``Table'' to refer to a table, ``Figure'' to refer to a figure, ``Algorithm'' to refer to an algorithm and ``Listing'' to refer to listings (code snippets). Note that, we do not use the articles ``a,'' ``an,'' and ``the'' before the words Eq., Figure, Table, and Listing, but you may use an article for referring the words figure, table, etc. in general.
+# Making the Confusion Matrix
+cm = confusion_matrix(Y_test, Y_pred3)
 
-For example, the sentence ``A report structure is shown in \textbf{the} Table~\ref{tab:gen_template}'' should be written as ``A report structure is shown \textbf{in} Table~\ref{tab:gen_template}.'' 
- 
+#Interpretation:
+print(classification_report(Y_test, Y_pred3))
+\end{lstlisting}
 
-\section{Summary}
-Write a summary of this chapter.
+\begin{table}[h!]
+    \centering
+    \caption{Classification Report of NB}
+    \label{tab:_ex_tab}
+    \begin{tabular}{ccccc}     
+        \toprule
+            &  precision & recall & f1-score & support \\
+        \midrule
+        0 & 0.80 & 0.90 & 0.84 & 39 \\
+        1 & 0.88 & 0.76 & 0.81 & 37 \\
 
-~\\[5em]
-\noindent
-{\huge\textbf{Note:}} In the case of \textbf{software engineering} project a Chapter ``\textbf{Testing and Validation}'' should precede the ``Results'' chapter. See Section~\ref{subsec:se_chpters} for report organization of such project. 
+        accuracy & - & - & 0.83 & 76 \\
+        macro avg & 0.84 & 0.83 & 0.83 & 76 \\
+        weighted avg & 0.83 & 0.83 & 0.83 & 76 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
+
+\begin{lstlisting}[language=Python, label=list:python_code_ex]
+#ROC
+logit_roc_auc = roc_auc_score(Y_test,NaiveBayesClassifier.predict(X_test))
+fpr, tpr, thresholds = roc_curve(Y_test, NaiveBayesClassifier.predict_proba(X_test)[:,1])
+plt.figure()
+plt.plot(fpr, tpr, label='Navie Bayes (area = %0.2f)' % logit_roc_auc)
+plt.plot([0, 1], [0, 1],'r--')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.title('Receiver operating characteristic')
+plt.legend(loc="lower right")
+plt.savefig('NB_ROC')
+plt.show()
+
+#PREDICTION FOR NEW DATASET using NaiveBayesClassifier
+ynew = NaiveBayesClassifier.predict(Newdataset)
+print("Predicted Class for newdata.csv:", ynew)
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{NB.png}
+    \caption{Receiver operating characteristics of NB}
+    \label{fig:enter-label}
+\end{figure}
