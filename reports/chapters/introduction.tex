@@ -67,27 +67,29 @@ health.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Solution approach}
+\section{Solution Approach}
 \label{sec:intro_sol} % label of Org section
-The solution approach involves a thorough step-by-step method designed to create an advanced 
-system for predicting heart disease, specifically focusing on early detection of CAD, with the ultimate goal of achieving our defined aim and objectives. The 
-project commences with the acquisition of a dataset related to cardiac issues obtained from the 
-research conducted by \cite{janosi-1988}, which is accessible through UC Irvine. Following 
-that, we carefully clean and process the data to find important patterns needed for training 
-our machine learning models. We incorporate technology into healthcare by using different smart 
-algorithms, like LR, NB, and RF classification. These 
-specific algorithms are chosen because they are proficient in effectively CAD, by taking into account key factors such as resting blood pressure, serum 
-cholesterol, and maximum heart rate achieved. The models are evaluated using specific metrics 
-like precision, recall, and the F1 score to provide us with the understanding of how well they 
-are performing.
+The solution approach involves a thorough step-by-step method designed to create an advanced system for predicting heart disease, specifically focusing on early detection of CAD.
+
+\subsection{Dataset Acquisition and Preprocessing}
+We begin by acquiring and analyzing the heart disease dataset, obtained from the research conducted by Janosi et al. [1], which is accessible through UC Irvine. The dataset is carefully cleaned and processed to identify and handle missing values, outliers, and inconsistencies.
+
+\subsection{Model Training and Optimization}
+\begin{itemize}
+\item \textbf{Logistic Regression (LR):} We train the LR classifier, optimizing meta-parameters such as regularization strength and maximum iterations to improve performance. LR is chosen for its ability to effectively classify CAD based on key risk factors such as resting blood pressure, serum cholesterol, and maximum heart rate achieved.
+\item \textbf{Naïve Bayes (NB):} The NB classifier is developed, focusing on feature selection and parameter tuning. NB is particularly suited for its simplicity and speed, making it an efficient model for heart disease prediction.
+\item \textbf{Random Forest (RF):} We utilize the RF algorithm to construct decision tree ensembles, refining predictive capabilities. RF is selected for its ability to handle nonlinear relationships and interactions between features, improving the accuracy of CAD prediction.
+\end{itemize}
+
+\subsection{Model Evaluation and Integration}
+The trained models are evaluated using specific metrics such as precision, recall, and the F1 score to assess their performance. Finally, the models are integrated into healthcare systems for real-time heart disease prediction, providing healthcare professionals with valuable insights and resources for informed decision-making.
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary of contributions and achievements} %  use this section 
 \label{sec:intro_sum_results} % label of summary of results
-Describe clearly what you have done/created/achieved and what the major results and their implications are. 
-
+In this project, we aimed to develop an advanced system for predicting heart disease using machine learning models, with the ultimate goal of enhancing patient outcomes and contributing to global efforts in cardiovascular health. We began by obtaining and analyzing a heart disease dataset, meticulously cleaning and preprocessing the data to prepare it for model training. We then trained three different machine learning models: Logistic Regression (LR), Naïve Bayes (NB), and Random Forest (RF). LR emerged as the top performer, achieving an accuracy of 87\%, indicating a high degree of correctness in its predictions. Our models not only accurately predict heart disease but also provide valuable insights into the risk factors associated with the condition, enabling healthcare professionals to make informed decisions and ultimately improving patient outcomes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

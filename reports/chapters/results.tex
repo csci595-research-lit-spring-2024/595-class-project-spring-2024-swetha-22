@@ -112,5 +112,21 @@ Based  on the evaluation metrics, the LR model achieved the best performance in 
 
 While RF and NB achieved reasonable performance (around 83-84\% accuracy), LR outperformed them in terms of all chosen metrics. This could be due to the specific characteristics of the dataset or the inherent strengths of LR in handling linear relationships between features.
 
+
+\section{Why Did Logistic Regression Perform Well?}
+Logistic Regression demonstrated superior performance compared to Random Forest and Naive Bayes in predicting heart disease. Several factors contributed to its success:
+
+\begin{itemize}
+    \item Linear Relationship Handling: Logistic Regression is particularly effective when the relationship between features and the target variable is linear. In our dataset, features might have linear relationships with the likelihood of heart disease, which Logistic Regression can exploit effectively.
+    
+    \item Interpretability Logistic Regression provides interpretable results, allowing us to understand the impact of each feature on the prediction. This transparency is essential in a medical context, where understanding the factors contributing to a prediction is crucial.
+    
+    \item Efficient with High-Dimensional Data Logistic Regression is efficient when dealing with high-dimensional data, making it suitable for datasets with a large number of features.
+\end{itemize}
+
+\section{Interpretation of Results}
+
+By achieving an accuracy of 87\%, Logistic Regression has demonstrated its potential as a valuable tool for early detection and risk assessment of heart disease. The balance between precision, recall, and accuracy indicates the model's effectiveness in correctly identifying patients with heart disease while minimizing false positives and false negatives.
+
 \section{Summary}
 This project explored the application of machine learning algorithms for heart disease prediction. The results demonstrate that the LR model achieved promising performance in predicting heart disease based on patient data. This approach has the potential to be a valuable tool for early detection and risk assessment of heart disease, ultimately contributing to improved patient outcomes.

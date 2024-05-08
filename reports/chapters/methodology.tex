@@ -12,15 +12,39 @@ LR is a statistical method used for binary classification tasks. It models the p
 NB is a probabilistic classifier based on Bayes' theorem with an assumption of independence between features. In heart disease prediction, Naïve Bayes can effectively analyze patient attributes and calculate the conditional probability of heart disease given the observed features. Its simplicity and computational efficiency make Naïve Bayes a popular choice for healthcare applications.
 
 \subsection{Random Forest}
-RF is an ensemble learning method that constructs a multitude of decision trees during training and outputs the mode of the classes (classification) or mean prediction (regression) of the individual trees. In heart disease prediction, Random Forest can analyze a large number of patient parameters and identify complex patterns associated with cardiovascular conditions.
+RF is an ensemble learning method that constructs a multitude of decision trees during training and outputs the mode of the classes (classification) or mean prediction (regression) of the individual trees. In heart disease prediction, RF can analyze a large number of patient parameters and identify complex patterns associated with cardiovascular conditions.
 
 \section{Implementations}
+
 \subsection{Logistic Regression}
-For LR implementation, we'll utilize the `LogisticRegression` class from the `sklearn.linear\_model` module. We'll preprocess the dataset, including handling missing values and scaling features, before fitting the model to the training data.
+To implement Logistic Regression,  we'll utilize the `LogisticRegression` class from the `sklearn.linearmodel` module. 
+
+\subsubsection{Preprocessing}
+Before fitting the model to the training data, we'll preprocess the dataset. This includes handling missing values and scaling features to ensure that all features contribute equally to the model.
+
+\subsubsection{Model Training}
+Once the dataset is preprocessed, we'll fit the Logistic Regression model to the training data. The model will learn to predict the presence or absence of heart disease based on the input features.
+
 \subsection{Naïve Bayes}
-For NB implementation, we'll use the `GaussianNB` class from the `sklearn.naive\_bayes` module. Similar to Logistic Regression, we'll preprocess the dataset and fit the model to the training data.
+For Naïve Bayes implementation, we'll use the `GaussianNB` class from the `sklearn.naivebayes` module.
+
+\subsubsection{Preprocessing}
+Similar to Logistic Regression, we'll preprocess the dataset for Naïve Bayes. This involves handling missing values and scaling features.
+
+\subsubsection{Model Training}
+After preprocessing, we'll fit the Naïve Bayes model to the training data. Naïve Bayes is particularly effective for classification tasks and is known for its simplicity and speed.
+
 \subsection{Random Forest}
-For RF implementation, we'll employ the `RandomForestClassifier` class from the `sklearn.ensemble` module. We'll preprocess the dataset and tune hyperparameters, such as the number of estimators and maximum depth, to optimize model performance.
+To implement Random Forest, we'll employ the `RandomForestClassifier` class from the `sklearn.ensemble` module.
+
+\subsubsection{Preprocessing}
+As with the other models, we'll preprocess the dataset for Random Forest. This includes handling missing values and scaling features.
+
+\subsubsection{Hyperparameter Tuning}
+Before training the model, we'll tune hyperparameters such as the number of estimators and maximum depth. This optimization process helps improve the performance of the Random Forest model.
+
+\subsubsection{Model Training}
+Once the dataset is preprocessed and hyperparameters are tuned, we'll fit the Random Forest model to the training data. Random Forest is an ensemble learning method that constructs a multitude of decision trees and outputs the mode of the classes as the prediction.
 
 \section{Experiments Design}
 In our experimental approach to assess the predictive performance of each algorithm for heart disease, we'll begin by dividing our dataset into separate training and testing sets. This division ensures that the models are trained on a subset of the data and evaluated on an independent portion, enabling us to gauge their generalization capability. To further fortify the reliability of our findings, we'll employ cross-validation techniques. This involves iteratively partitioning the dataset into multiple subsets, training the models on different combinations, and validating them on the remaining data, thus providing a more comprehensive evaluation. Subsequently, we'll utilize a range of performance metrics, including accuracy, precision, recall, and F1-score, to quantify the algorithms' effectiveness. These metrics will allow us to discern not only the models' overall correctness but also their ability to precisely identify positive cases and recall them accurately. By meticulously analyzing these performance indicators, we aim to determine the most optimal approach for heart disease prediction, considering factors such as model interpretability and computational efficiency alongside predictive accuracy.
